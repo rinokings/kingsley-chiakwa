@@ -12,7 +12,7 @@ Simulated an external brute force attack originating from a Kali Linux VM target
 
 ![Attacker Kali linux IP and configuration before attack](attacker-config.png)
 
-![Hydra Brute Force in Progress](rdp0brute-force-attack.png)
+![Hydra Brute Force in Progress](rdp-brute-force-attack.png)
 
 ![Ensured Windows Security Event is connected with Data Connector](sentinel-data-connector.png)
 

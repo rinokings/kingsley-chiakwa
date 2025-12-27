@@ -8,9 +8,7 @@ Simulated an external brute force attack originating from a Kali Linux VM target
 2. **Detection:** Monitored `SecurityEvent` table for **Event ID 4625**.
 3. **Analysis:** Identified failed logins within 2 minutes coming from an IP 127.0.0.1
 
-![Victim Host IP]
-
-(windows-vm-ip.png)
+![Victim Host IP](windows-vm-ip.png)
 
 ![Attacker Kali linux IP and configuration before attack](attacker-config.png)
 

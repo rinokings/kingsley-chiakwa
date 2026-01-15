@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M365 Security Hardening Blueprint | Kingsley O. Chiakwa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --secondary: #2dd4bf;
+            --dark-bg: #0a0f18;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: #f3f4f6;
+            background-image: radial-gradient(circle at 2px 2px, rgba(13, 148, 136, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(31, 41, 55, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        pre {
+            background: #0d1117 !important;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(13, 148, 136, 0.3);
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 border-b border-white/5 bg-gray-950/80 backdrop-blur-xl">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 group text-gray-400 hover:text-white transition">
+                <i class="fas fa-arrow-left text-xs group-hover:-translate-x-1 transition-transform"></i>
+                <span class="text-sm font-bold tracking-widest uppercase">Back to Portfolio</span>
+            </a>
+            <div class="text-xs font-mono text-teal-500">PROJECT_ID: M365_HARDEN_01</div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-24">
+        <!-- Project Header -->
+        <header class="mb-12">
+            <div class="inline-block px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 mb-4 text-xs font-bold text-teal-400 uppercase tracking-widest">
+                Cloud Security Lab
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">M365 Security Hardening Blueprint</h1>
+            <p class="text-xl text-gray-400 leading-relaxed">
+                Implementation of NIST-aligned security baselines for an enterprise Microsoft 365 tenant to mitigate credential theft and data exfiltration.
+            </p>
+        </section>
+
+        <!-- Metadata Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 py-8 border-y border-white/5">
+            <div>
+                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Focus</div>
+                <div class="text-white font-semibold">Identity & Compliance</div>
+            </div>
+            <div>
+                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Framework</div>
+                <div class="text-white font-semibold">NIST CSF / CIS</div>
+            </div>
+            <div>
+                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Duration</div>
+                <div class="text-white font-semibold">2 Weeks Lab</div>
+            </div>
+            <div>
+                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Status</div>
+                <div class="flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+                    <span class="text-white font-semibold">Completed</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Content -->
+        <article class="prose prose-invert max-w-none space-y-12">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-white flex items-center">
+                    <span class="w-8 h-8 rounded bg-teal-500/10 text-teal-500 flex items-center justify-center mr-3 text-sm">01</span>
+                    Executive Summary
+                </h2>
+                <p class="text-gray-400 mt-4 leading-relaxed">
+                    Default M365 configurations often prioritize usability over security, leaving organizations vulnerable to password spraying, phishing, and unauthorized app consent. This project involved deploying a "Zero Trust" architecture within a test tenant, reducing the attack surface by approximately 75% based on Secure Score metrics.
+                </p>
+            </section>
+
+            <section class="glass-card p-8 rounded-2xl">
+                <h2 class="text-2xl font-bold text-white mb-6">Technical Stack Used</h2>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-gray-900 rounded-lg border border-white/5 text-sm font-mono text-teal-400">Microsoft Entra ID</span>
+                    <span class="px-4 py-2 bg-gray-900 rounded-lg border border-white/5 text-sm font-mono text-teal-400">Defender for Office 365</span>
+                    <span class="px-4 py-2 bg-gray-900 rounded-lg border border-white/5 text-sm font-mono text-teal-400">Conditional Access</span>
+                    <span class="px-4 py-2 bg-gray-900 rounded-lg border border-white/5 text-sm font-mono text-teal-400">PowerShell (Microsoft.Graph)</span>
+                    <span class="px-4 py-2 bg-gray-900 rounded-lg border border-white/5 text-sm font-mono text-teal-400">DLP Policies</span>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-white flex items-center">
+                    <span class="w-8 h-8 rounded bg-teal-500/10 text-teal-500 flex items-center justify-center mr-3 text-sm">02</span>
+                    Key Implementation Phases
+                </h2>
+                
+                <div class="space-y-8 mt-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-teal-400 mb-2">Phase A: Identity Hardening</h3>
+                        <p class="text-gray-400 mb-4">Implemented a strict Conditional Access (CA) policy set to eliminate legacy authentication and enforce MFA based on risk levels.</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+                            <li>Blocked all <span class="text-white">Legacy Authentication</span> (IMAP, POP, SMTP) to prevent credential bypass.</li>
+                            <li>Configured <span class="text-white">Sign-in Risk</span> and <span class="text-white">User Risk</span> policies (requiring password resets on high-risk detection).</li>
+                            <li>Enforced phishing-resistant MFA for all administrative roles.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-teal-400 mb-2">Phase B: Threat Protection</h3>
+                        <p class="text-gray-400 mb-4">Configured Microsoft Defender for Office 365 to handle advanced email threats.</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+                            <li>Enabled <span class="text-white">Safe Attachments</span> in dynamic delivery mode.</li>
+                            <li>Enabled <span class="text-white">Safe Links</span> for real-time URL inspection.</li>
+                            <li>Configured Anti-Phishing impersonation protection for high-profile executives.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-white flex items-center">
+                    <span class="w-8 h-8 rounded bg-teal-500/10 text-teal-500 flex items-center justify-center mr-3 text-sm">03</span>
+                    PowerShell Automation Snippet
+                </h2>
+                <p class="text-gray-400 mt-4 mb-6">
+                    Used PowerShell to audit and disable users without MFA enabled across the tenant:
+                </p>
+                <pre class="mono text-xs text-gray-300">
+# Connect to Microsoft Graph
+Connect-MgGraph -Scopes "User.Read.All", "StrongAuthenticationDetail.Read.All"
+
+# Identify users without MFA registered
+$Users = Get-MgUser -All
+foreach ($User in $Users) {
+    $MfaStatus = Get-MgUserRegistrationDetails -UserId $User.Id
+    if ($MfaStatus.MethodsRegistered -eq $null) {
+        Write-Host "ALERT: User $($User.DisplayName) has no MFA registered!" -ForegroundColor Red
+    }
+}</pre>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-white flex items-center">
+                    <span class="w-8 h-8 rounded bg-teal-500/10 text-teal-500 flex items-center justify-center mr-3 text-sm">04</span>
+                    Results & Impact
+                </h2>
+                <div class="grid md:grid-cols-3 gap-4 mt-6">
+                    <div class="p-4 bg-teal-500/5 border border-teal-500/20 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-white mb-1">+75%</div>
+                        <div class="text-xs font-bold text-teal-500 uppercase tracking-widest">Secure Score</div>
+                    </div>
+                    <div class="p-4 bg-teal-500/5 border border-teal-500/20 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-white mb-1">Zero</div>
+                        <div class="text-xs font-bold text-teal-500 uppercase tracking-widest">Legacy Auth</div>
+                    </div>
+                    <div class="p-4 bg-teal-500/5 border border-teal-500/20 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-white mb-1">100%</div>
+                        <div class="text-xs font-bold text-teal-500 uppercase tracking-widest">Admin MFA</div>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+
+        <!-- Footer -->
+        <footer class="mt-24 pt-8 border-t border-white/5 text-center">
+            <p class="text-gray-500 text-sm mb-6 uppercase tracking-[0.2em] font-bold">End of Report</p>
+            <a href="index.html" class="inline-block px-8 py-3 bg-teal-600 text-white font-bold rounded hover:bg-teal-500 transition shadow-lg shadow-teal-900/20">
+                Back to Projects
+            </a>
+        </footer>
+    </main>
+</body>
+</html>

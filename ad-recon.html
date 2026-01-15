@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Directory Recon & Defense | Kingsley O. Chiakwa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --secondary: #2dd4bf;
+            --dark-bg: #0a0f18;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: #f3f4f6;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(13, 148, 136, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(31, 41, 55, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        pre {
+            background: #0d1117 !important;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(13, 148, 136, 0.2);
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation (Matched to Index) -->
+    <header class="fixed top-0 w-full z-50 border-b border-white/5 bg-gray-950/80 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 group">
+                <i class="fas fa-arrow-left text-teal-500 group-hover:-translate-x-1 transition-transform"></i>
+                <span class="text-xl font-bold tracking-tight text-white">Back<span class="text-teal-500">.</span></span>
+            </a>
+            <div class="hidden md:block text-xs font-mono text-gray-500 tracking-widest uppercase">
+                Project Archive // <span class="text-teal-500">AD_RECON_DEF_02</span>
+            </div>
+            <a href="mailto:chiakwak@gmail.com" class="px-5 py-2.5 bg-white text-gray-900 text-sm font-bold rounded hover:bg-teal-500 hover:text-white transition-all duration-300">
+                GET IN TOUCH
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pt-40 pb-24">
+        <!-- Header Section -->
+        <section class="mb-20">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 mb-6">
+                <span class="relative flex h-2 w-2">
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                </span>
+                <span class="text-xs font-bold text-teal-400 tracking-wider uppercase">Network Security Lab</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-[1.1]">
+                AD Recon &<br>
+                <span class="text-gradient underline decoration-white/10 underline-offset-8">Defensive Hardening.</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl leading-relaxed">
+                Simulating offensive reconnaissance techniques against a Windows Server environment to identify misconfigurations and implementing Group Policy-based defenses.
+            </p>
+        </section>
+
+        <!-- Project Details Grid -->
+        <div class="grid lg:grid-cols-3 gap-12 mb-20">
+            <!-- Sidebar Stats -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-sm font-black text-teal-500 uppercase tracking-widest mb-6">Project Metadata</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span class="text-gray-500 text-xs font-bold uppercase">Framework</span>
+                            <span class="text-white text-sm font-bold">MITRE ATT&CK</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span class="text-gray-500 text-xs font-bold uppercase">Target</span>
+                            <span class="text-white text-sm font-bold">Windows Server 2022</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span class="text-gray-500 text-xs font-bold uppercase">Tools</span>
+                            <span class="text-white text-sm font-bold">Nmap, PowerShell, GPO</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500 text-xs font-bold uppercase">Status</span>
+                            <span class="text-teal-400 text-sm font-bold">Lab Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-sm font-black text-teal-500 uppercase tracking-widest mb-4">Core Focus</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-check text-teal-500 mr-2"></i> AD Forest Setup</li>
+                        <li class="flex items-center"><i class="fas fa-check text-teal-500 mr-2"></i> Service Enumeration</li>
+                        <li class="flex items-center"><i class="fas fa-check text-teal-500 mr-2"></i> GPO Hardening</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="lg:col-span-2 space-y-12">
+                <section>
+                    <h2 class="text-3xl font-bold text-white mb-6">Executive Summary</h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        Active Directory (AD) remains the primary target for lateral movement in enterprise breaches. This lab involved deploying a complete AD forest in a virtual environment, performing network reconnaissance to identify vulnerable services, and then "locking down" the environment using the principle of least privilege and GPO hardening.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold text-white mb-6">Implementation Phases</h2>
+                    <div class="space-y-8">
+                        <div class="relative pl-8 border-l-2 border-teal-500/30">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-teal-500 shadow-[0_0_10px_rgba(13,148,136,0.5)]"></div>
+                            <h4 class="text-xl font-bold text-white mb-2">Phase 01: Lab Architecture</h4>
+                            <p class="text-gray-400 text-sm">Deployed two Windows Server 2022 VMs acting as Domain Controllers and one Windows 10 workstation. Configured a private virtual network to isolate testing.</p>
+                        </div>
+                        <div class="relative pl-8 border-l-2 border-teal-500/30">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-700"></div>
+                            <h4 class="text-xl font-bold text-white mb-2">Phase 02: Network Reconnaissance</h4>
+                            <p class="text-gray-400 text-sm mb-4">Utilized <span class="text-white mono">Nmap</span> to identify open ports (53, 88, 135, 389, 445). Identified vulnerable SMB signing requirements and LLMNR/NetBIOS protocols active on the network.</p>
+                            <pre class="mono text-[11px] leading-relaxed text-teal-400">
+# Nmap scan to identify AD services and OS versions
+nmap -sV -sC -Pn -p 88,135,389,445,3268 10.0.0.5</pre>
+                        </div>
+                        <div class="relative pl-8 border-l-2 border-teal-500/30">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-700"></div>
+                            <h4 class="text-xl font-bold text-white mb-2">Phase 03: Defensive Hardening</h4>
+                            <p class="text-gray-400 text-sm">Implemented GPOs to disable LLMNR/NetBIOS (mitigating NBT-NS poisoning) and enforced SMB Signing to prevent relay attacks.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold text-white mb-6">Key Security Remediation</h2>
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/10 space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="text-red-400 pt-1"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Vulnerability: Weak Password Policy</h5>
+                                <p class="text-gray-400 text-xs">Default settings allowed 8-character passwords with no complexity.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="text-teal-400 pt-1"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Remediation: Enforced Fine-Grained Password Policies</h5>
+                                <p class="text-gray-400 text-xs">Implemented a 14-character minimum and enabled account lockout thresholds after 5 failed attempts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <a href="index.html" class="inline-block px-8 py-3 bg-teal-600 text-white font-bold rounded hover:bg-teal-500 transition shadow-lg shadow-teal-900/20 mb-8">
+                BACK TO PORTFOLIO
+            </a>
+            <p class="text-gray-600 text-xs tracking-widest uppercase font-bold">&copy; 2024 Kingsley O. Chiakwa. Project Lab Archive.</p>
+        </div>
+    </footer>
+</body>
+</html>
